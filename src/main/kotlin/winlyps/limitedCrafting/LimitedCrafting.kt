@@ -14,6 +14,9 @@ class LimitedCrafting : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("LimitedCrafting plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doLimitedCrafting", "false")
+            logger.info("LimitedCrafting plugin has been disabled.")
+        }
     }
 }
